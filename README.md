@@ -1,7 +1,7 @@
 # Beau Harrison - Interactive Visualization
 
 ## Senator voting similarity and ideology
-senate-similarity.netlify.com
+https://senate-similarity.netlify.com/
 
 I found an article from Alberto Cairo's blog, [the functional art](http://www.thefunctionalart.com/2017/11/visualizing-voting-similarities-in.html), lauding the virtues of a US Senate voting similarities visualization from [Gramener](https://gramener.com). He made suggestions for improvements that I wanted to take on. His ideas turned out to be too ambitious for this homework. So I have scaled back my expectations. Andrew Gelman [made an argument](http://andrewgelman.com/2017/11/29/improve-visualization-voting-u-s-congress/) that a simpler version of the graphic would be more useful and Alberto followed up with a [new version](http://www.thefunctionalart.com/2017/12/a-makeover-of-similarities-in-senate.html). Cairo's new version with Gelman's suggestions is simpler and follows many of the guidelines we learned from the class. The new version uses more natural to interpret features like cartesian coordinates and leans on the political left-right relationship to make it more intuitive.
 
