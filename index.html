@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Data Visualization - Interactivity</title>
+  <style>
+    body {
+      font-size: 8px;
+      display: grid;
+      justify-content: center;
+    }
+
+    main {
+      width: 90vw;
+      padding-top: 5vh;
+    }
+
+    .senators {
+      cursor: pointer;
+    }
+
+    .jaroheadernum {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .jaroheader {
+      font-size: 14px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    #senatorForm {
+      display: grid;
+      max-width: 10vw;
+    }
+
+    #myModal[aria-hidden="true"] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div id="senatorForm">
+      <label for="senatorSelect">Select a Senator:</label>
+      <select id="senatorSelect" name="senatorSelect" class="selectpicker" data-live-search="true" data-size="5" style="text-transform:none"
+        title="Choose a senator" data-placement="bottom">
+        <option class="thisvote" data-placement="bottom" data-senator="S308">
+          <a href="#">Cardin (D-MD)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S351">
+          <a href="#">Toomey (R-PA)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S306">
+          <a href="#">Menendez (D-NJ)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S305">
+          <a href="#">Isakson (R-GA)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S356">
+          <a href="#">Donnelly (D-IN)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S197">
+          <a href="#">McCain (R-AZ)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S338">
+          <a href="#">Manchin (D-WV)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S312">
+          <a href="#">McCaskill (D-MO)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S327">
+          <a href="#">Warner (D-VA)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S221">
+          <a href="#">Feinstein (D-CA)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S352">
+          <a href="#">Heller (R-NV)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S247">
+          <a href="#">Wyden (D-OR)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S136">
+          <a href="#">Cochran (R-MS)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S363">
+          <a href="#">King (I-ME)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S385">
+          <a href="#">Cortez Masto (D-NV)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S348" selected>
+          <a href="#">Paul (R-KY)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S282">
+          <a href="#">Nelson (D-FL)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S252">
+          <a href="#">Collins (R-ME)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S314">
+          <a href="#">Tester (D-MT)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S313">
+          <a href="#">Sanders (I-VT)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S326">
+          <a href="#">Udall (D-NM)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S360">
+          <a href="#">Heitkamp (D-ND)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S253">
+          <a href="#">Durbin (D-IL)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S361">
+          <a href="#">Hirono (D-HI)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S366">
+          <a href="#">Warren (D-MA)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S353">
+          <a href="#">Schatz (D-HI)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S370">
+          <a href="#">Booker (D-NJ)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S337">
+          <a href="#">Coons (D-DE)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S277">
+          <a href="#">Carper (D-DE)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S386">
+          <a href="#">Duckworth (D-IL)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S322">
+          <a href="#">Merkley (D-OR)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S341">
+          <a href="#">Blumenthal (D-CT)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S284">
+          <a href="#">Stabenow (D-MI)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S362">
+          <a href="#">Kaine (D-VA)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S359">
+          <a href="#">Heinrich (D-NM)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S330">
+          <a href="#">Bennet (D-CO)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S288">
+          <a href="#">Murkowski (R-AK)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S303">
+          <a href="#">Thune (R-SD)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S307">
+          <a href="#">Brown (D-OH)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S380">
+          <a href="#">Peters (D-MI)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S293">
+          <a href="#">Graham (R-SC)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S369">
+          <a href="#">Markey (D-MA)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S390">
+          <a href="#">Van Hollen (D-MD)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S364">
+          <a href="#">Murphy (D-CT)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S316">
+          <a href="#">Whitehouse (D-RI)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S346">
+          <a href="#">Lee (R-UT)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S347">
+          <a href="#">Moran (R-KS)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S387">
+          <a href="#">Harris (D-CA)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S332">
+          <a href="#">Franken (D-MN)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S358">
+          <a href="#">Flake (R-AZ)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S350">
+          <a href="#">Rubio (R-FL)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S324">
+          <a href="#">Shaheen (D-NH)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S057">
+          <a href="#">Leahy (D-VT)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S383">
+          <a href="#">Sullivan (R-AK)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S270">
+          <a href="#">Schumer (D-NY)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S355">
+          <a href="#">Cruz (R-TX)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S310">
+          <a href="#">Corker (R-TN)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S354">
+          <a href="#">Baldwin (D-WI)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S382">
+          <a href="#">Sasse (R-NE)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S375">
+          <a href="#">Daines (R-MT)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S384">
+          <a href="#">Tillis (R-NC)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S300">
+          <a href="#">Burr (R-NC)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S229">
+          <a href="#">Murray (D-WA)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S289">
+          <a href="#">Alexander (R-TN)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S372">
+          <a href="#">Capito (R-WV)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S236">
+          <a href="#">Inhofe (R-OK)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S349">
+          <a href="#">Portman (R-OH)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S331">
+          <a href="#">Gillibrand (D-NY)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S309">
+          <a href="#">Casey (D-PA)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S388">
+          <a href="#">Hassan (D-NH)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S342">
+          <a href="#">Blunt (R-MO)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S323">
+          <a href="#">Risch (R-ID)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S389">
+          <a href="#">Kennedy (R-LA)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S184">
+          <a href="#">Shelby (R-AL)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S379">
+          <a href="#">Perdue (R-GA)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S391">
+          <a href="#">Young (R-IN)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S318">
+          <a href="#">Wicker (R-MS)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S118">
+          <a href="#">Hatch (R-UT)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S377">
+          <a href="#">Gardner (R-CO)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S344">
+          <a href="#">Hoeven (R-ND)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S345">
+          <a href="#">Johnson (R-WI)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S365">
+          <a href="#">Scott (R-SC)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S259">
+          <a href="#">Reed (D-RI)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S153">
+          <a href="#">Grassley (R-IA)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S317">
+          <a href="#">Barrasso (R-WY)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S343">
+          <a href="#">Boozman (R-AR)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S275">
+          <a href="#">Cantwell (D-WA)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S373">
+          <a href="#">Cassidy (R-LA)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S287">
+          <a href="#">Cornyn (R-TX)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S374">
+          <a href="#">Cotton (R-AR)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S266">
+          <a href="#">Crapo (R-ID)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S254">
+          <a href="#">Enzi (R-WY)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S376">
+          <a href="#">Ernst (R-IA)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S357">
+          <a href="#">Fischer (R-NE)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S311">
+          <a href="#">Klobuchar (D-MN)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S378">
+          <a href="#">Lankford (R-OK)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S174">
+          <a href="#">McConnell (R-KY)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S260">
+          <a href="#">Roberts (R-KS)</a>
+        </option>
+        <option class="thisvote" data-placement="bottom" data-senator="S381">
+          <a href="#">Rounds (R-SD)</a>
+        </option>
+      </select>
+    </div>
+    <div id="similarity"></div>
+  </main>
+  <script src="external/d3v4jetpack.js"></script>
+  <script src="similarities.js"></script>
+</body>
+
+</html>
